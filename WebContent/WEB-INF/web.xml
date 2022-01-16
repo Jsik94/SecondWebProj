@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>JeongYoonSik2</display-name>
+
+
+
+	<!-- 에러페이지 설정 -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/ErrorCode.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/ErrorCode.jsp</location>
+	</error-page>
+
+
+	<!-- 커스텀 태그 라이브러리 등록 -->
+	<!-- 등록을해야 찾아서 쓸수있음 해당파일가서 xml 정보로 class 파일을 매핑하는 것 같음 -->
+	<jsp-config>
+		<taglib>
+			<!-- taglib에서 매핑할 주소 -->
+			<taglib-uri>/WEB-INF/tld/myTag.tld</taglib-uri>
+			<!-- 물리적 주소 -->
+			<taglib-location>/WEB-INF/tld/myTag.tld</taglib-location>
+		</taglib>
+
+
+	</jsp-config>
+
+
+
+	<!--컨텍스트급 파라미터 등록 -->
+
+	<!-- 아래는 오라클 시퀀스네임임 명명규칙 : tablename_SEQ -->
+	<context-param>
+		<param-name>PAGESIZE</param-name>
+		<param-value>8</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>BLOCKPAGE</param-name>
+		<param-value>5</param-value>
+	</context-param>
+
+
+
+	<context-param>
+		<param-name>CUSTOM_SEQ</param-name>
+		<param-value>SEQ_CUSTOM_CUS_PID</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>PERSONAL_SEQ</param-name>
+		<param-value>SEQ_PERSONAL_PER_ID</param-value>
+	</context-param>
+
+
+
+	<!-- 서블릿급 등록 -->
+
+
+
+
+	<!-- 컨트롤러 매핑 구간 -->
+
+	<!-- 명명규칙 controller: 무조건 controller.이름으로 suffix : Controller 이름 : 해당 webContent 
+		밑에 jsp가 있는 폴더 + _ + 해당 페이지 이름 url패턴은 webContent 폴더 / 페이지 이름. suffix : jsik -->
+
+	<!-- <servlet> <servlet-name>디렉토리_이름</servlet-name> <servlet-class>controller.디렉토리.이름</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>디렉토리_이름</servlet-name> <url-pattern>/디렉토리/이름.jsik</url-pattern> 
+		</servlet-mapping> -->
+
+	<!-- MemberBoard -->
+
+	<servlet>
+		<servlet-name>MEMBOARD_DOWNLOAD</servlet-name>
+		<servlet-class>controller.memboard.DownloadController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_DOWNLOAD</servlet-name>
+		<url-pattern>/memboard/Download.jsik</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>MEMBOARD_LIST</servlet-name>
+		<servlet-class>controller.memboard.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_LIST</servlet-name>
+		<url-pattern>/memboard/List.jsik</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MEMBOARD_VIEW</servlet-name>
+		<servlet-class>controller.memboard.ViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_VIEW</servlet-name>
+		<url-pattern>/memboard/View.jsik</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MEMBOARD_WRITE</servlet-name>
+		<servlet-class>controller.memboard.WriteController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_WRITE</servlet-name>
+		<url-pattern>/memboard/Write.jsik</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MEMBOARD_EDIT</servlet-name>
+		<servlet-class>controller.memboard.EditController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_EDIT</servlet-name>
+		<url-pattern>/memboard/Edit.jsik</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>MEMBOARD_DELETE</servlet-name>
+		<servlet-class>controller.memboard.DeleteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MEMBOARD_DELETE</servlet-name>
+		<url-pattern>/memboard/Delete.jsik</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- login -->
+	<servlet>
+		<servlet-name>CUSTOM_MYPAGE</servlet-name>
+		<servlet-class>controller.custom.MypageController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CUSTOM_MYPAGE</servlet-name>
+		<url-pattern>/custom/MyPage.jsik</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CUSTOM_EDIT</servlet-name>
+		<servlet-class>controller.custom.EditController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CUSTOM_EDIT</servlet-name>
+		<url-pattern>/custom/Edit.jsik</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CUSTOM_SignUp</servlet-name>
+		<servlet-class>controller.custom.SignUpController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CUSTOM_SignUp</servlet-name>
+		<url-pattern>/custom/SignUp.jsik</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>CUSTOM_LOGOUT</servlet-name>
+		<servlet-class>controller.custom.LogoutController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CUSTOM_LOGOUT</servlet-name>
+		<url-pattern>/custom/Logout.jsik</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>CUSTOM_LOGIN</servlet-name>
+		<servlet-class>controller.custom.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CUSTOM_LOGIN</servlet-name>
+		<url-pattern>/custom/Login.jsik</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- index -->
+	<servlet>
+		<servlet-name>INDEX_SERVLET</servlet-name>
+		<servlet-class>controller.IndexController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>INDEX_SERVLET</servlet-name>
+		<url-pattern>/Index.jsik</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!--커넥션 풀 사용 JDNI ROOT -->
+	<context-param>
+		<param-name>JDNI_ROOT</param-name>
+		<param-value>java:/comp/env/db/kosmo</param-value>
+	</context-param>
+
+
+	<resource-ref>
+		<description>Oracle Datasource example</description>
+		<res-ref-name>db/kosmo</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+
+
+
+
+	<!-- session timelimit -->
+	<session-config>
+		<!-- 분 단위 -->
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>Index.jsik</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
