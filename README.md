@@ -3,7 +3,7 @@ Kosmo 9th web project
 
 프로젝트명 : JSP 게시판 프로젝트
 
-## 목적 
+## 목적 ✨
 - 웹 프로젝트를 완성
 - 부트스트랩 Template 적용해볼 것
 - CRUD 구현
@@ -14,7 +14,7 @@ Kosmo 9th web project
 
 
 
-## 구성 �
+## 구성 🎈
 - 유효성 Script
 - Session 영역을 통한 로그인
 - 쿠키를 통한 아이디 자동저장
@@ -22,7 +22,7 @@ Kosmo 9th web project
 - Custom ELTag를 이용한 서블릿 페이지 구현
 
 
-### 산출물 📝
+### 산출물 📑
 - [PPT](https://github.com/ychic/SecondWebProj/raw/main/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.pptm) 
 - ERD
 - result :🥇
